@@ -7,6 +7,8 @@ using YUI.Agents.players;
 using YUI.Cores;
 using YUI.ObjPooling;
 using YUI.PatternModules;
+using YUI.Rooms;
+using YUI.UI.CompleteUI;
 
 namespace YUI.Agents.Bosses
 {
