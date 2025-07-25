@@ -1,0 +1,42 @@
+using System;
+using UnityEngine;
+using YUI.Agents.players;
+
+namespace YUI
+{
+    public class StartCondition : TutorialCondition
+    {
+        private bool _isTracking = false;
+
+        public override void Initialize(Action onMet, Player player)
+        {
+            base.Initialize(onMet, player);
+            _maxCount = 2;
+            _currentCount = 0;
+            _isTracking = true;
+
+        }
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            _isTracking = false;
+
+        }
+
+        private void Update()
+        {
+            if (!_isTracking) return;
+
+            _currentCount += Time.deltaTime;
+
+            UpdateUI();
+
+            if (_currentCount >= _maxCount)
+            {
+                _isTracking = false;
+                _onMet?.Invoke();
+            }
+        }
+    }
+}
